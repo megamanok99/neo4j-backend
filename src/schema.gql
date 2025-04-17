@@ -7,13 +7,13 @@ type Customer {
   name: String!
 }
 
-type Supplier {
-  inn: String!
+type Product {
+  code: String!
   name: String!
 }
 
-type Product {
-  code: String!
+type Supplier {
+  inn: String!
   name: String!
 }
 
@@ -24,11 +24,49 @@ type Tender {
   publishDate: String!
   closeDate: String!
   price: Float!
-  customer: Customer!
+  customer: Customer
   winner: Supplier
   products: [Product]
 }
 
+type UploadResponse {
+  success: Boolean!
+  message: String!
+}
+
+"""Upload custom scalar type"""
+scalar Upload
+
 type Query {
   tenders: [Tender!]!
+  tender(id: String!): Tender
+}
+
+type Mutation {
+  createTender(input: TenderInput!): Tender!
+  updateTender(id: String!, input: TenderInput!): Tender!
+  deleteTender(id: String!): Boolean!
+  uploadTenders(file: Upload!): UploadResponse!
+}
+
+input TenderInput {
+  id: String!
+  title: String!
+  description: String!
+  publishDate: String!
+  closeDate: String!
+  price: Int!
+  customer: CompanyInput!
+  winner: CompanyInput!
+  products: [ProductInput!]!
+}
+
+input CompanyInput {
+  inn: String!
+  name: String!
+}
+
+input ProductInput {
+  code: String!
+  name: String!
 }

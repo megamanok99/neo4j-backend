@@ -1,6 +1,6 @@
 {
   "name": "neo4j-backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "author": "",
   "private": true,
@@ -27,6 +27,7 @@
     "@nestjs/graphql": "^13.0.4",
     "@nestjs/platform-express": "^11.0.13",
     "apollo-server-express": "^3.13.0",
+    "csv-parser": "^3.2.0",
     "cypher-query-builder": "^6.0.4",
     "graphql": "^16.10.0",
     "graphql-tools": "^9.0.18",
